@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datadog-istio-ambient
+data:
+  istio-config: |-
+    ad_identifiers:
+      - proxyv2
+      - proxyv2-rhel8
+      - ztunnel
+    init_config:
+    instances:
+      - istio_mesh_endpoint: http://%%host%%:15020/stats/prometheus
+        use_openmetrics: true
+        send_histograms_buckets: true
+        tag_by_endpoint: false
+        metrics:
+          - istio_.*
+          - workload_manager_.*

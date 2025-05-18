@@ -1,0 +1,18 @@
+datadog:
+  confd:
+    istio.yaml: |-
+      ad_identifiers:
+        - proxyv2
+        - proxyv2-rhel8
+        - ztunnel
+      
+      init_config:
+      
+      instances:
+        - use_openmetrics: true
+          send_histograms_buckets: false
+          istio_mesh_endpoint: http://%%host%%:15020/stats/prometheus
+          tag_by_endpoint: false
+          metrics:
+            - istio_.*
+            - workload_manager_.*

@@ -1,0 +1,11 @@
+agents:
+  volumeMounts:
+    - name: datadog-istio-config
+      mountPath: /etc/datadog-agent/conf.d/istio.d
+  volumes:
+    - name: datadog-istio-config
+      configMap:
+        name: datadog-istio-ambient
+        items:
+          - key: istio-config
+            path: conf.yaml
