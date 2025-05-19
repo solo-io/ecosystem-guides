@@ -125,6 +125,8 @@ you can go to Datadog UI select Metrics Explorer (https://app.datadoghq.com/metr
 
 if traffic is passing, you can select the specific metric and see the traffic overall or filter it per application. In the example below we're looking at `istio.mesh.istio_request_duration_milliseconds.sum` (the prefix of `istio.mesh.` is added by the DataDog agent and corresponds to `istio_request_duration_milliseconds_sum` in `ztuunnel`) that is being sent to `httpbin` application.
 
+You can locate the `istio.mesh.istio_request_duration_milliseconds.sum` metric from this example in the list of the [core integration](https://github.com/DataDog/integrations-core/blob/287fe4a440edd3fb73ec4c82be2f908b760ac542/istio/metadata.csv#L269) (the list is also searchable and can be located using `istio.mesh.request.duration.milliseconds.sum`).
+
 ![Istio Metrics for application in DataDog Metrics Explorer](./img/app_metrics_in_ui.png)
 
 If you encounter any issues following these steps, please reach out to your Solo.io representative for assistance.
