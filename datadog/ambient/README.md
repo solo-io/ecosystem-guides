@@ -54,6 +54,10 @@ workload_manager_proxies_started_total
 workload_manager_proxies_stopped_total
 ```
 
+__Note:__ This list of metrics depends on two criteria:
+- Presence of the traffic, without traffic list is limited and gets extended when traffic is server by Istio
+- Metrics are per host, every `ztunnel` pod can have diiferent list of metrics and values are related to the specific instance.
+
 ## Install
 
 There are two options add valuess directly to the deployment or update the default values via `ConfigMap`.
@@ -117,6 +121,10 @@ Lastly go to Datadog dashboard and check the metrics are available.
 
 you can go to Datadog UI select Metrics Explorer (https://app.datadoghq.com/metric/explorer) and type one of the metrics. In the screenshot the `istio.mesh.workload_manager_active_proxy_count` and you can see the ztunnel image is available as the input source.
 
-![Datadog Metrics Explorer](./img/metrics_in_ui.png)
+![Datadog ztunnel metrics in DataDog Metrics Explorer](./img/ztunnel_in_ui.png)
 
-# ecosystem-guides
+if traffic is passing, you can select the specific metric and see the traffic overall or filter it per application. In the example below we're looking at `istio.mesh.istio_request_duration_milliseconds.sum` (the prefix of `istio.mesh.` is added by the DataDog agent and corresponds to `istio_request_duration_milliseconds_sum` in `ztuunnel`) that is being sent to `httpbin` application.
+
+![Istio Metrics for application in DataDog Metrics Explorer](./img/app_metrics_in_ui.png)
+
+If you encounter any issues following these steps, please reach out to your Solo.io representative for assistance.
