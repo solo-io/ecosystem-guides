@@ -1,0 +1,11 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: install-cni
+        env:
+        - name: HOST_PROBE_SNAT_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
